@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calcuModel">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div >
+    <input type="text" id="keyword">
+    <button onclick="search()">搜索</button>
+    <ul id="content">
+
+    </ul>
+</div>
+
+</body>
+
+<script>
+    function show(data){
+        var res = data.s;
+        var ul = document.getElementById('content');
+        ul.innerHTML="";
+
+        res.forEach(function(item){
+            var ele = document.createElement('li');
+            ele.innerHTML = item;
+            ul.appendChild(ele);
+        });
+    }
+
+ function search(){
+     var keyword = document.getElementById('keyword').value;
+     var url = 'http://suggestion.baidu.com/su?wd='+keyword+'&cb=show';
+     var script = document.createElement('script');
+     script.src = url;
+      document.body.appendChild(script);
+
+ }
+</script>
+</html>
